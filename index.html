@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+  <style>
+    .calculator {
+      width: 350px;
+      margin: 0 auto;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      background-color: grey;
+    }
+    #display{
+        width: 340px;
+        height: 40px;
+    }
+    h3{
+        text-align: center;
+    }
+    button{
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        color: white;
+        border:1px solid white; 
+    }
+    #cal{
+        background-color: black;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h3>Calculator</h3>
+    <input type="text" id="display" readonly >
+    <br><br>
+    <div id="cal">
+    <button onclick="appendToDisplay('9')">9</button>
+    <button onclick="appendToDisplay('8')">8</button>
+    <button onclick="appendToDisplay('7')">7</button>
+    <button onclick="appendToDisplay('+')">+</button>
+    <button onclick="clearDisplay()">AC</button>
+    <br><br>
+    <button onclick="appendToDisplay('6')">6</button>
+    <button onclick="appendToDisplay('5')">5</button>
+    <button onclick="appendToDisplay('4')">4</button>
+    <button onclick="appendToDisplay('-')">-</button>
+    <br><br>
+    <button onclick="appendToDisplay('3')">3</button>
+    <button onclick="appendToDisplay('2')">2</button>
+    <button onclick="appendToDisplay('1')">1</button>
+    <button onclick="appendToDisplay('*')">*</button>
+    <br><br>
+    <button onclick="calculateResult('.')">.</button>
+    <button onclick="appendToDisplay('0')">0</button>
+    <button onclick="calculateResult()">=</button>
+    <button onclick="appendToDisplay('/')">/</button>
+  </div>
+</div>
+
+  <script>
+    let display = document.getElementById("display");
+    let equation = "";
+
+    function appendToDisplay(value) {
+      equation += value;
+      display.value = equation;
+    }
+
+    function clearDisplay() {
+      equation = "";
+      display.value = "";
+    }
+
+    function calculateResult() {
+      try {
+        equation = eval(equation);
+        display.value = equation;
+      } catch (error) {
+        display.value = "Error";
+      }
+    }
+  </script>
+</body>
+</html>
